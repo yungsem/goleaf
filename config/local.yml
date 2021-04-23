@@ -1,0 +1,12 @@
+server:
+  name: goleaf
+  port: 9600
+log:
+  output: console
+  level: debug
+  path: D:\\project\\logs\\goleaf
+mysql:
+  url: localhost:3306
+  db: goleaf
+  username: root
+  password: root

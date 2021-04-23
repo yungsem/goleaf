@@ -13,6 +13,11 @@ db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/goleaf")
 
 3. 运行系统
 
+4. 交叉编译
+```
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+```
+
 ## 参考
 https://tech.meituan.com/2019/03/07/open-source-project-leaf.html
 

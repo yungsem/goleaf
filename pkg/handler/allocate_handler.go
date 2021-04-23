@@ -3,14 +3,16 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/yungsem/goleaf/pkg/allocator"
+	"github.com/yungsem/goleaf/pkg/inits"
 	"github.com/yungsem/gotool/result"
 	"net/http"
 )
 
-// 获取 ID
+// Allocate 获取 ID
 func Allocate(c *gin.Context) {
 
 	bizTag := c.Query("bizTag")
+	inits.Log.Debug("收到请求，bizTag=%s", bizTag)
 
 	nextId, err := allocator.AllocateId(bizTag)
 	if err != nil {

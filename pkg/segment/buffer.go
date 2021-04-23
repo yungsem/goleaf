@@ -1,6 +1,7 @@
 package segment
 
 import (
+	"github.com/yungsem/goleaf/pkg/inits"
 	"sync"
 )
 
@@ -21,6 +22,7 @@ type BizBuffer struct {
 // NewBizBuffer 创建一个 BizBuffer
 // 新创建的 BizBuffer 没有号段
 func NewBizBuffer(bizTag string) *BizBuffer {
+	inits.Log.Info("新建buffer")
 	var segments []*Segment
 
 	return &BizBuffer{
@@ -45,6 +47,7 @@ func (b *BizBuffer) expand() {
 	seg, err := LoadSegment(b.BizTag)
 	if err != nil {
 		b.expandChan <- err
+		return
 	}
 	b.Segments = append(b.Segments, seg)
 	b.expandChan <- nil
@@ -53,6 +56,7 @@ func (b *BizBuffer) expand() {
 // NextId 获取下一个 ID
 func (b *BizBuffer) NextId() (int, error) {
 	if b.isEmpty() || (b.Segments[0].UsedPercent() >= UsedPercentMax && len(b.Segments) < bufferSize) {
+		inits.Log.Info("开启新的goroutine，加载新的segment")
 		go b.expand()
 
 		select {

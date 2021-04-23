@@ -1,0 +1,12 @@
+server:
+  name: goleaf
+  port: 9601
+log:
+  output: file
+  level: info
+  path: /opt/servers/logs/goleaf
+mysql:
+  url: 47.98.198.0:3306
+  db: goleaf
+  username: root
+  password: root

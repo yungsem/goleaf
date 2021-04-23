@@ -3,7 +3,7 @@ package segment
 import (
 	"context"
 	"errors"
-	"github.com/yungsem/goleaf/pkg/db"
+	"github.com/yungsem/goleaf/pkg/inits"
 	"github.com/yungsem/gotool/maths"
 	"time"
 )
@@ -11,6 +11,7 @@ import (
 // UsedPercentMax 表示号段使用比例达到该值时，就要扩充号段
 const UsedPercentMax float64 = 40
 
+// Segment 表示号段
 // 号段 [0,1000) ，其中 Left = 0 ，Right = 1000
 // Offset 表示已经分配的 ID 的偏移量
 // 比如已经分配了 10 个 ID ，Offset 就是 10
@@ -26,7 +27,7 @@ func (s *Segment) AllCount() int {
 	return s.Right - s.Left + s.Offset
 }
 
-// RemainPercent 返回该号段的已使用 ID 数的百分比
+// UsedPercent 返回该号段的已使用 ID 数的百分比
 func (s *Segment) UsedPercent() float64 {
 	f := maths.Round(float64(s.Offset)/float64(s.AllCount()), 2) * 100
 	return f
@@ -48,6 +49,9 @@ func (s *Segment) NextId() int {
 func LoadSegment(bizTag string) (s *Segment, err error) {
 	maxId, size, err := updateSegment(bizTag)
 	if err != nil {
+		// 打印原始日志，方便开发介入排查
+		inits.Log.Error(err)
+		err = errors.New("load segment failed")
 		return
 	}
 	s = buildSegment(maxId, size)
@@ -77,7 +81,7 @@ func updateSegment(bizTag string) (maxId int, size int, err error) {
 	defer cancelFunc()
 
 	// 开启事务
-	tx, err := db.DB.BeginTx(ctx, nil)
+	tx, err := inits.DB.BeginTx(ctx, nil)
 	if err != nil {
 		return
 	}

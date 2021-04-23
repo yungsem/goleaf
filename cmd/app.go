@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/yungsem/goleaf/pkg/inits"
 	"github.com/yungsem/goleaf/pkg/router"
 )
 
@@ -16,7 +17,7 @@ func main() {
 	r := router.Init()
 
 	// 运行服务
-	err := r.Run(":9600")
+	err := r.Run(":" + inits.Conf.Server.Port)
 	if err != nil {
 		panic(err)
 	}
