@@ -7,6 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/yungsem/goleaf/config"
 	"github.com/yungsem/gotool/log"
+	"os"
 )
 
 var (
@@ -31,7 +32,7 @@ func initConf() {
 
 // initLog 初始化 Log
 func initLog() {
-	Log = log.NewLog(Conf.Log.Output, Conf.Log.Level, Conf.Log.Path)
+	Log = log.NewLog(Conf.Log.Output, Conf.Log.Level, Conf.Log.Path + string(os.PathSeparator) + Conf.Server.Name )
 }
 
 // initDB 初始化 MySQL 数据库连接

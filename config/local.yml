@@ -2,9 +2,9 @@ server:
   name: goleaf
   port: 9600
 log:
-  output: console
+  output: file
   level: debug
-  path: D:\\project\\logs\\goleaf
+  path: D:\\project\\logs
 mysql:
   url: localhost:3306
   db: goleaf

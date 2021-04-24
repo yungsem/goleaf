@@ -4,7 +4,7 @@ server:
 log:
   output: file
   level: info
-  path: /opt/servers/logs/goleaf
+  path: /opt/servers/logs
 mysql:
   url: 47.98.198.0:3306
   db: goleaf
