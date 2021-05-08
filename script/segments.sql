@@ -41,7 +41,6 @@ CREATE TABLE `segments`  (
 -- ----------------------------
 -- Records of segments
 -- ----------------------------
-INSERT INTO `segments` VALUES (1, 0, 10, 'mes', 'mes', '2021-04-07 15:29:00');
-INSERT INTO `segments` VALUES (2, 0, 10, 'wms', 'wms', '2021-04-07 15:29:02');
+INSERT INTO `segments` VALUES (1, 0, 10, 'test', 'test', '2021-04-07 15:29:00');
 
 SET FOREIGN_KEY_CHECKS = 1;

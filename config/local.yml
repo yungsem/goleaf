@@ -2,7 +2,7 @@ server:
   name: goleaf
   port: 9600
 log:
-  output: file
+  output: console
   level: debug
   path: D:\\project\\logs
 mysql:

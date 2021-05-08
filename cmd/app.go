@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/yungsem/goleaf/pkg/inits"
-	"github.com/yungsem/goleaf/pkg/router"
+	inits2 "github.com/yungsem/goleaf/inits"
+	router2 "github.com/yungsem/goleaf/router"
+	"log"
+	"net/http"
+	_ "net/http/pprof"
 )
 
 func main() {
@@ -14,10 +17,17 @@ func main() {
 	}()
 
 	// 初始化路由
-	r := router.Init()
+	r := router2.Init()
+
+	go func() {
+		inits2.Log.Debug("服务启动，开启 pprof 采样")
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
+
 
 	// 运行服务
-	err := r.Run(":" + inits.Conf.Server.Port)
+	inits2.Log.Debug("服务启动，监听端口%s", inits2.Conf.Server.Port)
+	err := r.Run(":" + inits2.Conf.Server.Port)
 	if err != nil {
 		panic(err)
 	}
