@@ -1,13 +1,13 @@
 package allocator
 
 import (
-	segment2 "github.com/yungsem/goleaf/segment"
+	"github.com/yungsem/goleaf/business/segment"
 	"sync"
 )
 
 var (
 	// 全局的 bizBufferMap ，存储各个业务对应的号段 buffer
-	bizBufferMap = make(map[string]*segment2.BizBuffer)
+	bizBufferMap = make(map[string]*segment.BizBuffer)
 	// 全局的锁，用于全局加锁
 	mutex        sync.Mutex
 )
@@ -22,7 +22,7 @@ func AllocateId(bizTag string) (int, error) {
 
 	// 该 bizTag 对应的 bizBuffer 尚不存在，则需要创建
 	if !ok {
-		bizBuffer = segment2.NewBizBuffer(bizTag)
+		bizBuffer = segment.NewBizBuffer(bizTag)
 		bizBufferMap[bizTag] = bizBuffer
 	}
 	mutex.Unlock()

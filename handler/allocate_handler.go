@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	allocator2 "github.com/yungsem/goleaf/allocator"
+	"github.com/yungsem/goleaf/business/allocator"
 	inits2 "github.com/yungsem/goleaf/inits"
 	"github.com/yungsem/gotool/result"
 	"net/http"
@@ -14,7 +14,7 @@ func Allocate(c *gin.Context) {
 	bizTag := c.Query("bizTag")
 	inits2.Log.Debug("收到请求，bizTag=%s", bizTag)
 
-	nextId, err := allocator2.AllocateId(bizTag)
+	nextId, err := allocator.AllocateId(bizTag)
 	if err != nil {
 		c.JSON(http.StatusOK, result.Error(err.Error()))
 		return
@@ -27,7 +27,7 @@ func Allocate(c *gin.Context) {
 func Info(c *gin.Context) {
 	bizTag := c.Query("bizTag")
 
-	infoList := allocator2.BizBufferMapInfo(bizTag)
+	infoList := allocator.BizBufferMapInfo(bizTag)
 
 	c.JSON(http.StatusOK, result.Success(infoList))
 }
