@@ -46,6 +46,8 @@ github.com/ugorji/go/codec v1.1.7/go.mod h1:Ax+UKWsSmolVDwsd+7N3ZtXu+yMGCf907BLY
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yungsem/gotool v0.1.4 h1:4NWgmPyZcL6QKwRDmn3+p1cxJV239yoPB5tM8zKZMhg=
 github.com/yungsem/gotool v0.1.4/go.mod h1:7FZWSDLm2+BEPG08aNE5FDNs5lqWWGdXqXOp49/3Ucc=
+github.com/yungsem/gotool v0.1.6 h1:P/fcD1yEPJeFF7A2m3YujTFsQbelb59F/3IEHugWgYg=
+github.com/yungsem/gotool v0.1.6/go.mod h1:Ozh4naAVCbPvhpzQKLqMyGRuq6YUNGxDKuxZ4o939BY=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=

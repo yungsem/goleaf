@@ -6,7 +6,8 @@ log:
   level: info
   path: /opt/servers/logs
 mysql:
-  url: 47.98.198.0:3306
+  host: localhost
+  port: 3306
   db: goleaf
   username: root
   password: root

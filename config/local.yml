@@ -6,7 +6,8 @@ log:
   level: debug
   path: D:\\project\\logs
 mysql:
-  url: localhost:3306
+  host: localhost
+  port: 3306
   db: goleaf
   username: root
   password: root
