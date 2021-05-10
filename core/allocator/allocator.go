@@ -1,7 +1,7 @@
 package allocator
 
 import (
-	"github.com/yungsem/goleaf/business/segment"
+	"github.com/yungsem/goleaf/core/segment"
 	"sync"
 )
 

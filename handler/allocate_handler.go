@@ -2,7 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/yungsem/goleaf/business/allocator"
+	"github.com/yungsem/goleaf/core/allocator"
 	inits2 "github.com/yungsem/goleaf/inits"
 	"github.com/yungsem/gotool/result"
 	"net/http"
